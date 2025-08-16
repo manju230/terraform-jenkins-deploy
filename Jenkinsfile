@@ -2,9 +2,9 @@ pipeline {
    agent any
    environment {
        // use the Jenkins credential IDs you created
-       AWS_ACCESS_KEY_ID     = credentials('aws-access-key-id')
-       AWS_SECRET_ACCESS_KEY = credentials('aws-secret-access-key')
-       AWS_DEFAULT_REGION    = 'ap-south-1'   // update region
+         AWS_ACCESS_KEY_ID     = credentials('AWS_ACCESS_KEY_ID')
+       AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
+       AWS_DEFAULT_REGION    = "ap-south-1"
    }
    stages {
        stage('Terraform Init') {
