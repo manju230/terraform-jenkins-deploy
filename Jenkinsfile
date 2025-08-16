@@ -1,24 +1,20 @@
 pipeline {
    agent any
    stages {
-       stage('Terraform Init & Plan') {
+       stage('Init') {
            steps {
                sh '''
-                   terraform init
-                   terraform plan -out=tfplan
+                 cd ${WORKSPACE}
+                 terraform init
                '''
            }
        }
-       stage('Approval') {
+       stage('Plan') {
            steps {
-               script {
-                   input message: "Approve to apply?"
-               }
-           }
-       }
-       stage('Terraform Apply') {
-           steps {
-               sh 'terraform apply -auto-approve tfplan'
+               sh '''
+                 cd ${WORKSPACE}
+                 terraform plan
+               '''
            }
        }
    }
