@@ -1,9 +1,6 @@
 
 pipeline {
-    agent any
-    environment {
-        #TF_CLI_ARGS = "-no-color"   // Ensures clean, aligned output
-    }
+    agent any    
     stages {
         stage('Terraform Init & Plan') {
             steps {
